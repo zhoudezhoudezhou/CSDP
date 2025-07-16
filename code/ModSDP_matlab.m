@@ -8,7 +8,7 @@ function max_geneset=ModSDP_matlab(A,C,k,exclusion)
 % A and C are all mutation matrices with the same number of columns: m_i (sample) x n (gene).
 % For example, to identify specific driver gene sets of certain r cancer types relative to other s cancer types, A ans C can be represented as follows: 
 % A : A{1}, A{2}, ..., A{r}
-% B : B{1}, B{2}, ..., B{s}
+% C : C{1}, C{2}, ..., C{s}
 %
 % k : number of desired genes 
 %
