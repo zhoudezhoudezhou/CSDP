@@ -3,18 +3,23 @@ function maxpop = ModSDP_GA_matlab(A,C,k,exclusion)
 %If IBM ILOG CPLEX optimizer is not added to your matlab, genetic algorithms can be used instead
 % This function uses genetic algorithm to identify specific driver gene sets in cancer (A relative to C).
 %
-% A : m (sample) x n (genes) mutation matrix.
+% A and C are all mutation matrices with the same number of columns: m_i (sample) x n (gene).
+% For example, to identify specific driver gene sets of certain r cancer types relative to other s cancer types, A ans C can be represented as follows: 
+% A : A{1}, A{2}, ..., A{r}
+% B : B{1}, B{2}, ..., B{s}
 %
-% k : number of desired genes.
+% k : number of desired genes 
 %
-% exclusion : the genes which are to be excluded from the results.
+% exclusion : the genes which are to be excluded from the results
 %
-% maxpop : output matrix with k+2 columns.
-%          every row indicates the information of one solution; 
-%          for row i, maxpop(i,1:k) records the selected genes;
-%          maxpop(i,k+1) records the weight of this gene set;
-%          maxpop(i,k+2) records the significance level. 
-
+% maxpop: output vector with k+r+s+3 columns (r and s denote the numbers of corresponding cancer types considered);
+%         it records the information of the optimal solution; 
+%         maxpop(1:k) records the selected genes;
+%         maxpop(k+1) records the weight of this gene set;
+%         maxpop(k+2:k+r+s+1) records the significance level of this gene set in each cancer type;
+%         maxpop(k+r+s+2) records the overall significance level of this gene set;
+%         maxpop(k+r+s+3) records the number of selected genes (i.e., k);
+% 
 
 num=length(A);
 num2=length(C);
