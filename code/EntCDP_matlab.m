@@ -1,18 +1,22 @@
 function maxpop = EntCDP_matlab(A,k,exclusion)
 %
-% This function uses genetic algorithm to identify common driver gene sets in cancer A.
+% This function uses genetic algorithm to identify common driver gene sets among cancers (A).
 %
-% A : m (sample) x n (genes) mutation matrix.
+% A are all mutation matrices with the same number of columns: m_i (sample) x n (gene).
+% For example, to identify common driver gene sets of certain r cancer types, A can be represented as follows: 
+% A : A{1}, A{2}, ..., A{r}%
 %
 % k : number of desired genes.
 %
 % exclusion : the genes which are to be excluded from the results.
 %
-% maxpop : output matrix with k+2 columns.
+% maxpop : output matrix with k+r+3 columns.
 %          every row indicates the information of one solution; 
 %          for row i, maxpop(i,1:k) records the selected genes;
 %          maxpop(i,k+1) records the weight of this gene set;
-%          maxpop(i,k+2) records the significance level. 
+%          maxpop(i,k+2:k+r+1) records the significance level of this gene set in each cancer type;
+%          maxpop(i,k+r+2) the overall significance level of this gene set;
+%          maxpop(i,k+r+3) records the number of selected genes (i.e., k);
 
 
 num=length(A);
