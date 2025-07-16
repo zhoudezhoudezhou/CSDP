@@ -20,12 +20,9 @@ function maxpop = EntCDP_matlab(A,k,exclusion)
 
 
 num=length(A);
-
-
 if ~isempty(exclusion)
     for r=1:num
         A{r}(:,exclusion)=[];
-        [~,n]=size(A{1});
     end
 end
 [~,n]=size(A{1});
